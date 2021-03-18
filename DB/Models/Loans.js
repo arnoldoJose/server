@@ -12,7 +12,7 @@ var loansSchema = new mongoose.Schema({
   name_user: {
     type: String,
     required: true,
-    unique: true,
+
   },
   mobile_user: {
     type: String,
