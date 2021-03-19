@@ -29,7 +29,9 @@ route.get("/get/authors", getAuthor.getAllAuthors);
 //Loans Case
 const { createLoans, getAllLoans } = require('../CaseLoans/loansController');
 //Route  Loans
-route.get("/get/loans", getAllLoans.getLoans )
+route.get("/get/loans", getAllLoans.getLoans );
+route.get("/get/returns", getAllLoans.getReturns);
+route.get("/get/reservations",getAllLoans.getReservetaions);
 
 route.post("/create/loan", createLoans.createLoan );
 
