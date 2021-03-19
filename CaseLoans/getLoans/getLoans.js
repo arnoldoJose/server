@@ -6,12 +6,12 @@ const getLoans = async (req,res) => {
   res.json({data});
 }
 
-const getReturns = async () => {
+const getReturns = async (req,res) => {
   let data = await getReturnLoan();
   res.json({data});
 }
 
-const getReservetaions = async () => {
+const getReservetaions = async (req,res) => {
   let data = await getAllReservetaions();
   res.json({data});
 }
