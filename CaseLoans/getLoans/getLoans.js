@@ -3,17 +3,17 @@ const { getRepositoriLoans, getReturnLoan, getAllReservetaions } = require("../.
 
 const getLoans = async (req,res) => {
   let data = await getRepositoriLoans();
-  res.json({data});
+  res.json(data);
 }
 
 const getReturns = async (req,res) => {
   let data = await getReturnLoan();
-  res.json({data});
+  res.json(data);
 }
 
 const getReservetaions = async (req,res) => {
   let data = await getAllReservetaions();
-  res.json({data});
+  res.json(data);
 }
 
 module.exports = { getLoans, getReturns, getReservetaions };
