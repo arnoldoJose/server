@@ -33,7 +33,7 @@ class Server {
     
     this.app.use(bodyParser.urlencoded({ extended: true }));
     
-    this.app.use(require("./Routes/Routes"));
+    this.app.use(require("../Routes/Routes"));
 
   }
 
