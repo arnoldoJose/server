@@ -34,7 +34,7 @@ route.get("/get/returns", getAllLoans.getReturns);
 route.get("/get/reservations",getAllLoans.getReservetaions);
 
 route.post("/create/loan", createLoans.createLoan );
-
+route.post("/admin/loan",createLoans.createAdminLoan);
 
 //case Admin
 const { registerUser,loginUser } = require('../CaseAdmin/adminController');

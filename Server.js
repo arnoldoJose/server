@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
 const session = require("express-session");
-let bodyParser = require("body-parser");
 const Cors = require("cors");
 const { conectionDB } = require("./DB/DBConnect");
+
 require("./Config/config");
 
   app.use(Cors());
@@ -16,9 +16,11 @@ require("./Config/config");
       cookie: { secure: true },
     })
   );
+
   conectionDB();
+  
   app.use(express.json());
-  app.use(express.urlencoded({extended:true}));
+  app.use(express.urlencoded({extended:false}));
 
   app.use(require("./Routes/Routes"));
 
