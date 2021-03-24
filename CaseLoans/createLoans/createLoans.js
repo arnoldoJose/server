@@ -20,3 +20,7 @@ const { name_user, mobile_user, image_book, name_book, return_loan } = req.body;
 }
 
 module.exports = { createLoan };
+
+//crear otra ruta para crear prestamos directos 
+//desde la pagina del administrador y los campos
+//reservation_state este en true y return_state tambien en true
