@@ -42,7 +42,10 @@ class Server {
   }
 
   execute() {
+
+    this.middlewares();
     this.server.listen(process.env.PORT, () => console.log("server online"));
+  
   }
 }
 
