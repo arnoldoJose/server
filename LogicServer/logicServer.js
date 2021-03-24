@@ -17,7 +17,7 @@ class Server {
   }
   
   middlewares () {
-    app.use(Cors());
+    this.app.use(Cors());
     
     this.app.use(
       session({
@@ -29,11 +29,11 @@ class Server {
     );
     conectionDB();
     
-    app.use(bodyParser.json());
+    this.app.use(bodyParser.json());
     
-    app.use(bodyParser.urlencoded({ extended: true }));
+    this.app.use(bodyParser.urlencoded({ extended: true }));
     
-    app.use(require("./Routes/Routes"));
+    this.app.use(require("./Routes/Routes"));
 
   }
 
