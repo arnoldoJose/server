@@ -16,7 +16,7 @@ const getNameAndCategory = async (bookName,category) =>{
 };
 
 //
-const createBook = () => new Book();
+const addBook = ({name,autor,descripcion,categoria,editorial,amount},path) => new Book({name,autor,descripcion,categoria,editorial,book_cover: path,amount,});
 const updateBook = async (id) => await Book.findByIdAndUpdate(id)
 
-module.exports = {createBook,getBooks,getBook,updateBook,getName,getNameAndCategory};
+module.exports = {addBook,getBooks,getBook,updateBook,getName,getNameAndCategory};

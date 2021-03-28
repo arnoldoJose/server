@@ -1,20 +1,22 @@
-const { createBook } = require("../../Repositories/bookRepositori");
+const { addBook } = require("../../Repositories/bookRepositori");
+const cloudinary = require('cloudinary').v2;
+const fs = require('fs');
+cloudinary.config({
+  cloud_name: "deqdnvs2k",
+  api_key: "333499587651297",
+  api_secret: "vQZ-5tTbmiHBH9D1PzXBYwy-4Uc",
+});
 
-const create = (req,res) => {
-
-  let {name,autor,editorial,descripcion,categoria} = req.body;
+const create = async (req,res) => {
+   let data = await cloudinary.uploader.upload(req.file.path);
   
-  let book = createBook();
-  book.name = name;
-  book.autor = autor;
-  book.descripcion = descripcion;
-  book.categoria = categoria;
-  book.editorial = editorial;
-  book.imageUpload(req.file.filename);
+    let book = addBook(req.body,data.url);
+    res.json(book);
+    // book.save();
 
-  book.save();
-  
-  res.json({ book });
+  if(fs.existsSync(req.file.path)){
+    fs.unlinkSync(req.file.path);
+  }
 
 }
 
