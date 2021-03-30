@@ -5,7 +5,9 @@ require('dotenv').config({path:'development.env'})
 // process.env.DB_URL,
 
 const conectionDB = () => {
-  mongoose.connect(process.env.DB_URL,{ useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
+  mongoose.connect(
+    process.env.DB_URL,
+    { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
     (err) => {
       if (!err) {
         console.log("MongoDB Connection Succeeded.");

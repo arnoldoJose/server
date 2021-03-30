@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-
+const { key } = require('../../Config/config');
 const auth = (req,res,next) => {
 
   const headerToken = req.get("Authorization");
@@ -16,7 +16,7 @@ const auth = (req,res,next) => {
   let validateToken;
 
   try {
-    validateToken = jwt.verify(token, "key");
+    validateToken = jwt.verify(token, key);
   } catch (error) {
     error.statusCode = 500;
 

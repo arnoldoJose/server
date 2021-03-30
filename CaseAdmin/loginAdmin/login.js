@@ -10,14 +10,14 @@ const login = async (req,res) => {
 
   if(!admin){
   
-    res.status(400).json({message: "el email no existe"});
+    res.status(400).json({message: "el email o contraseña no existe"});
     return;
   
   }
 
   if(!admin.decryptPassword(password)){
   
-    res.status(400).json({message: "el password no existe"});
+    res.status(400).json({ message: "el email o contraseña no existe" });
     return;
   
   }else{
@@ -26,7 +26,7 @@ const login = async (req,res) => {
         usuario: admin
       },key,{ expiresIn: expirate });
 
-    res.status(200).json({token});
+    res.status(200).json({token,admin});
   }
 
 }
