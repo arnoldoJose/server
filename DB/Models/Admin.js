@@ -18,7 +18,7 @@ var adminSchema = new mongoose.Schema({
 });
 
 adminSchema.methods.encryptPassword = function (password) {
-  return bcrypt.hashSync(password,bcrypt.genSaltSync(10));
+  return bcrypt.hashSync(password,bcrypt.genSaltSync(10),null);
 }
 
 adminSchema.methods.decryptPassword = function (password) {
