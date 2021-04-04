@@ -11,13 +11,12 @@ const create = async (req,res) => {
    let data = await cloudinary.uploader.upload(req.file.path);
   
     let book = addBook(req.body,data.url);
+    
     res.json(book);
-    // book.save();
 
-  if(fs.existsSync(req.file.path)){
-    fs.unlinkSync(req.file.path);
-  }
-
+    if(fs.existsSync(req.file.path)) fs.unlinkSync(req.file.path);
+    
+    book.save();
 }
 
 module.exports = { create };

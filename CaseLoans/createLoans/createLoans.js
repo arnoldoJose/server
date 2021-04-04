@@ -12,10 +12,9 @@ const { name_user, mobile_user, image_book, name_book, return_loan } = req.body;
   loan.date_loan = new Date().toLocaleString();
   loan.return_date = return_loan;
 //crear otro campo llamado cantidad
+res.json( loan );
 
-  loan.save();
-
-  res.json( loan );
+loan.save();
 
 }
 
