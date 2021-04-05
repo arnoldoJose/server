@@ -6,7 +6,7 @@ require('dotenv').config({path:'development.env'})
 
 const conectionDB = () => {
   mongoose.connect(
-    "mongodb://localhost:27017/library",
+    process.env.DB_URL,
     { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true },
     (err) => {
       if (!err) {
