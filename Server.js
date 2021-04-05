@@ -1,7 +1,7 @@
+// const fs = require('fs');
+// const https = require('https');
 const express = require("express");
 const app = express();
-const fs = require('fs');
-const https = require('https');
 const session = require("express-session");
 const Cors = require("cors");
 const { conectionDB } = require("./DB/DBConnect");
@@ -26,11 +26,8 @@ require("./Config/config");
 
   app.use(require("./Routes/Routes"));
 
-  const httpserver = https.createServer({
-    key: fs.readFileSync('server.key'),
-    cert: fs.readFileSync('server.cer')
-  },app);
 
-  httpserver.listen(process.env.PORT, () => console.log("server online"));
+
+  app.listen(process.env.PORT, () => console.log("server online"));
 
    
