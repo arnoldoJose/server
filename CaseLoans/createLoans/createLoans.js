@@ -30,9 +30,9 @@ const createAdminLoan = (req, res) => {
   loan.return_date = return_loan;
   loan.reservation_state = "assigned";
 
-  loan.save();
-
   res.json(loan);
+  
+  loan.save();
 };
 
 module.exports = { createLoan, createAdminLoan };
