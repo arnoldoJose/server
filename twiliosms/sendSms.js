@@ -1,5 +1,5 @@
-const { smsSid,smsToken } = require("../Config/config");
-const client = require("twilio")(smsSid,smsToken);
+const { accountSid,authToken } = require("../Config/config");
+const client = require("twilio")(accountSid, authToken);
 
 const sendMessage = async (req, res) => {
    try {
@@ -15,8 +15,6 @@ const sendMessage = async (req, res) => {
    } catch (error) {
      console.log(error);
    }
-   console.log(smsSid);
-   console.log(smsToken);
 };
 
 module.exports = { sendMessage };
