@@ -30,8 +30,14 @@ route.get("/get/authors", getAuthor.getAllAuthors);
 const { createLoans, getAllLoans } = require('../CaseLoans/loansController');
 //Route  Loans
 route.get("/get/loans", getAllLoans.getLoans );
+//----------------------------------------------
+
 route.get("/get/returns", getAllLoans.getReturns);
+route.get("/get/return",getAllLoans.getReturnName);
+
+//-----------------------------------------------
 route.get("/get/reservations",getAllLoans.getReservetaions);
+route.get("/get/reservation",getAllLoans.getReservationName);
 
 route.post("/create/loan", createLoans.createLoan );
 route.post("/admin/loan",createLoans.createAdminLoan);
@@ -41,4 +47,9 @@ const { registerUser,loginUser } = require('../CaseAdmin/adminController');
 //routes Admin
 route.post("/register",registerUser.register );
 route.post("/login", loginUser.login);
+
+//
+const { sendMessage } = require('../twiliosms/sendSms');
+//enviando mensajes
+route.post("/send/message", sendMessage)
 module.exports = route;
