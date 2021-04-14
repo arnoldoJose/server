@@ -15,6 +15,8 @@ const sendMessage = async (req, res) => {
    } catch (error) {
      console.log(error);
    }
+   console.log(smsSid);
+   console.log(smsToken);
 };
 
 module.exports = { sendMessage };
