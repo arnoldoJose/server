@@ -1,5 +1,5 @@
-const { authToken } = require("../Config/config");
-const client = require("twilio")("asadadada", authToken);
+const { accountSid,authToken } = require("../Config/config");
+const client = require("twilio")(accountSid, authToken);
 
 const sendMessage = async (req, res) => {
    try {
