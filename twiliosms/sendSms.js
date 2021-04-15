@@ -4,7 +4,7 @@ const client = require("twilio")(accountSid, authToken);
 const sendMessage = async (req, res) => {
    try {
      let { phone } = req.query;
-
+    
      let data = await client.messages.create({
        to: `+505${phone}`,
        from: "+15852095296",
@@ -13,7 +13,7 @@ const sendMessage = async (req, res) => {
 
      res.json(data.sid);
    } catch (error) {
-     console.log(error);
+   res.json(error);
    }
 };
 
