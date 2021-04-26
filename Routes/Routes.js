@@ -3,7 +3,7 @@ const upload = require('../Config/uploadFile');
 // const auth = require('../Middleware/auth/auth');
 
 //Book CASE
-const { createBook, getBook, updateBook } = require('../CaseBook/bookController');
+const { createBook, getBook, updateBook,deleteBook } = require('../CaseBook/bookController');
 //Routes Book
 route.get("/get/books", getBook.getAllBooks);
 
@@ -17,7 +17,7 @@ route.post("/create/book",[upload.single("image")],createBook.create );
 
 route.put("/update/book/:id", [upload.single("image")],updateBook.update );
 
-
+route.delete("/delete/book/:id",deleteBook.bookDelete);
 
 //Authors Case
 const { getAuthor } = require('../CaseAuthor/authorController');

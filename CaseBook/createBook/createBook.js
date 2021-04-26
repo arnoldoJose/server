@@ -1,6 +1,6 @@
 const { addBook } = require("../../Repositories/bookRepositori");
 const cloudinary = require('cloudinary').v2;
-const fs = require('fs');
+const fse = require('fs-extra');
 cloudinary.config({
   cloud_name: "deqdnvs2k",
   api_key: "333499587651297",
@@ -14,9 +14,10 @@ const create = async (req,res) => {
     
     res.json(book);
 
-    if(fs.existsSync(req.file.path)) fs.unlinkSync(req.file.path);
-    
     book.save();
+
+    fse.unlinkSync(req.file.path);
+    
 }
 
 module.exports = { create };
