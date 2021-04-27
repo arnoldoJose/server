@@ -1,11 +1,11 @@
 
 const { eleminatedBook } = require('../../Repositories/bookRepositori');
 
-const bookDelete =  (req,res) => {
+const bookDelete = async (req,res) => {
 
   let { id } = req.params;
 
-   eleminatedBook(id);//quitar asing
+  await eleminatedBook(id);
 }
 
 

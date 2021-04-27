@@ -17,7 +17,7 @@ route.post("/create/book",[upload.single("image")],createBook.create );
 
 route.put("/update/book/:id", [upload.single("image")],updateBook.update );
 
-route.delete("/delete/book/:id",deleteBook.bookDelete);
+route.post("/delete/book/:id",deleteBook.bookDelete);
 
 //Authors Case
 const { getAuthor } = require('../CaseAuthor/authorController');
