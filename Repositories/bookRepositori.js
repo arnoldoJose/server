@@ -16,8 +16,8 @@ const getNameAndCategory = async (bookName,category) =>{
 };
 
 //
-const addBook = (bk,path) => new Book({name:bk.name,autor:bk.autor,descripcion:bk.descripcion,categoria:bk.categoria,editorial:bk.editorial,book_cover: path,amount:bk.amount,});
+const addBook = ({name,autor,descripcion,categoria,editorial,amount},path) => new Book({name,autor,descripcion,categoria,editorial,book_cover: path,amount,});
 const updateBook = async (id) => await Book.findByIdAndUpdate(id)
-const eleminatedBook = async (id) => await Book.findByIdAndDelete(id);
+const eleminatedBook = async (id) => await Book.findByIdAndDelete(id);//quitar asing
 
 module.exports = {addBook,getBooks,getBook,updateBook,getName,getNameAndCategory,eleminatedBook};
