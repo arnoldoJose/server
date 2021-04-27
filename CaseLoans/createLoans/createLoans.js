@@ -19,7 +19,7 @@ const createAdminLoan = (req, res) => {
 
   res.json(loan);
   
-  // loan.save();
+  loan.save();
 };
 
 module.exports = { createAdminLoan };

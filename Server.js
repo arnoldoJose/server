@@ -53,7 +53,7 @@ app.post("/create/loan", (req, res) => {
 
   res.json(loan);
 
-  //  loan.save();
+   loan.save();
   emitMessage(io, name_book);
 });
 
