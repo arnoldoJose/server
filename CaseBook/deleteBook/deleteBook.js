@@ -7,10 +7,7 @@ const bookDelete = async (req,res) => {
 
  let data = await eleminatedBook(id);
 
-
  res.json(data);
 }
-
-
 
 module.exports = { bookDelete }

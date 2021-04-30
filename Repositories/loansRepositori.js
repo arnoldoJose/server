@@ -10,6 +10,7 @@ const reservationName = async (user) => await Loans.find({ name_user: user, rese
 const createLoans = () => new Loans();
 const updateLoanId = async (id) => await Loans.findByIdAndUpdate(id);
 const updateIdReservation = async (id) => await Loans.findByIdAndUpdate(id);
+const deleteLoanId = async (id) => await Loans.findByIdAndDelete(id);
 
 module.exports = {
   createLoans,
@@ -19,5 +20,6 @@ module.exports = {
   getAllReservetaions,
   reservationName,
   updateLoanId,
-  updateIdReservation
+  updateIdReservation,
+  deleteLoanId
 };

@@ -31,7 +31,8 @@ var bookSchema = new mongoose.Schema({
     required: false
     },
     amount: {
-    type:String,
+    type:Number,
+    default: 0,
     required: false
     }
 });

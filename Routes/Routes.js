@@ -27,7 +27,7 @@ route.get("/get/authors", getAuthor.getAllAuthors);
 
 
 //Loans Case
-const { createLoans, getAllLoans,updateLoans } = require('../CaseLoans/loansController');
+const { createLoans, getAllLoans,updateLoans,deleteLoan } = require('../CaseLoans/loansController');
 //Route  Loans
 route.get("/get/loans", getAllLoans.getLoans );
 //----------------------------------------------
@@ -38,6 +38,9 @@ route.get("/get/return",getAllLoans.getReturnName);
 //-----------------------------------------------
 route.get("/get/reservations",getAllLoans.getReservetaions);
 route.get("/get/reservation",getAllLoans.getReservationName);
+//------------------
+route.post("/delete/loan/:id",deleteLoan.eleminatedLoan);
+
 
 route.post("/admin/loan",createLoans.createAdminLoan);
 route.put("/update/loan/:id",updateLoans.updateLoan);

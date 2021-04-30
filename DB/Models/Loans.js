@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 var loansSchema = new mongoose.Schema({
+  book_id: {
+    type:String,
+    required:false
+  },
   name_book: {
     type: String,
     required: true,

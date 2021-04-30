@@ -37,6 +37,7 @@ app.post("/create/loan", (req, res) => {
   }`;
 
   const {
+    book_id,
     name_user,
     mobile_user,
     image_book,
@@ -44,6 +45,7 @@ app.post("/create/loan", (req, res) => {
     return_loan,
   } = req.body;
   const loan = createLoans();
+  loan.book_id = book_id;
   loan.name_book = name_book;
   loan.image_book = image_book;
   loan.name_user = name_user;

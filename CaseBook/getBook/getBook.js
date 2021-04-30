@@ -5,7 +5,7 @@ const getAllBooks = async (req,res) => {
 
   const book = await getBooks();
 
-  res.json({ book });
+  res.json( book );
 };
 
 const getOneBook = async (req,res) => {

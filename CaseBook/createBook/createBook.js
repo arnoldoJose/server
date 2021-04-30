@@ -12,12 +12,11 @@ const create = async (req,res) => {
   
     let book = addBook(req.body,data.url);
     
-    res.json(book);
-
     book.save();
 
     fse.unlinkSync(req.file.path);
     
+    res.json(book);
 }
 
 module.exports = { create };
