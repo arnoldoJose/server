@@ -18,7 +18,6 @@ const createAdminLoan = (req, res) => {
   loan.date_loan = fecha;
   loan.return_date = return_loan;
   loan.reservation_state = "assigned";
-
    
   quitOneBook(loan,book_id,res);
 

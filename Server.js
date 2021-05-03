@@ -7,7 +7,7 @@ const io = require("socket.io")(server);
 const { connection, emitMessage } = require("./clasSocket/conectionSocket");
 const { conectionDB } = require("./DB/DBConnect");
 const { createLoans } = require("./Repositories/loansRepositori");
-
+const { getBook }= require('./Repositories/bookRepositori');
 require("./Config/config");
 
 app.use(Cors());
@@ -28,14 +28,14 @@ conectionDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.post("/create/loan", (req, res) => {
+app.post("/create/loan",async (req, res) => {
   let year = new Date().getFullYear(),
     month = new Date().getMonth() + 1,
     day = new Date().getDate();
   let fecha = `${year}-${month <= 9 ? "0" + month : month}-${
     day <= 9 ? "0" + day : day
   }`;
-
+  
   const {
     book_id,
     name_user,
@@ -44,6 +44,9 @@ app.post("/create/loan", (req, res) => {
     name_book,
     return_loan,
   } = req.body;
+
+  let data = await getBook(book_id)
+
   const loan = createLoans();
   loan.book_id = book_id;
   loan.name_book = name_book;
@@ -53,10 +56,15 @@ app.post("/create/loan", (req, res) => {
   loan.date_loan = fecha;
   loan.return_date = return_loan;
 
-  res.json(loan);
+  if(data.amount){
+    loan.save();
+    res.json(loan);
 
-   loan.save();
-  emitMessage(io, name_book);
+    emitMessage(io, name_book);
+  
+  }else{
+    res.json({messageError:"libro agotado"});
+  }
 });
 
 app.use(require("./Routes/Routes"));

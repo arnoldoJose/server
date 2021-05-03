@@ -28,4 +28,5 @@ const quitOneBookReservation = async (id) => {
 
 }
 
-module.exports = { quitOneBook, incrementOneBook,quitOneBookReservation };
+
+module.exports = { quitOneBook, incrementOneBook,quitOneBookReservation};
