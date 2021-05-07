@@ -26,7 +26,7 @@ app.use(
 conectionDB();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 app.post("/create/loan",async (req, res) => {
   let year = new Date().getFullYear(),
