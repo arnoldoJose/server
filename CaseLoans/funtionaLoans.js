@@ -6,7 +6,7 @@ const quitOneBook = async (loan, id, res) => {
     loan.save();
     data.amount -= 1;
     data.save();
-    res.json({ messageCorrect: "prestamo procesado" });
+    res.json({ messageCorrect: "prestamo procesado",data: loan });
   } else {
     res.json({ messageError: "libro agotado" });
   }

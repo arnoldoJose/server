@@ -1,4 +1,5 @@
 const { updateLoanId,updateIdReservation } = require('../../Repositories/loansRepositori');
+const { getBook } = require('../../Repositories/bookRepositori');
 const { incrementOneBook,quitOneBookReservation } = require('../funtionaLoans');
 
 const updateLoan = async (req,res) => {
@@ -17,13 +18,19 @@ const updateLoan = async (req,res) => {
 const updateReservation = async (req,res) => {
 
   let { id } = req.params;
-
+  let { bookI } = req.query;
   let data = await updateIdReservation(id);
-  data.reservation_state = "assigned";
-  quitOneBookReservation(data.book_id);
-  data.save();
+  let datos = await getBook(bookI);
 
-  res.json({message: 'la reservacion a sido asignada'});
+ if(datos.amount){
+   data.reservation_state = "assigned";
+   quitOneBookReservation(datos._id);
+   data.save();  
+   res.json({message: 'la reservacion a sido asignada'});
+ }else{
+   res.json({ messageError: "Libro aun no disponible" });
+ }
+
 }
 
 module.exports = { updateLoan, updateReservation }

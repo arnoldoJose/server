@@ -39,6 +39,10 @@ route.get("/get/return",getAllLoans.getReturnName);
 route.get("/get/reservations",getAllLoans.getReservetaions);
 route.get("/get/reservation",getAllLoans.getReservationName);
 //------------------
+route.get("/get/user/loans",getAllLoans.getAllUserLons);
+
+
+//-----------
 route.post("/delete/loan/:id",deleteLoan.eleminatedLoan);
 
 
@@ -51,8 +55,15 @@ const { registerUser,loginUser } = require('../CaseAdmin/adminController');
 route.post("/register",registerUser.register );
 route.post("/login", loginUser.login);
 
+//case user
+const  { userRegister,userLogin } = require('../CaseUser/userController');
+//routes user
+route.post("/register/user",userRegister.register);
+route.post("/login/user",userLogin.login);
+
 //
 const { sendMessage } = require('../twiliosms/sendSms');
+const { getLoans } = require('../CaseLoans/getLoans/getLoans');
 //enviando mensajes
 route.post("/send/message", sendMessage)
 module.exports = route;

@@ -7,7 +7,7 @@ const io = require("socket.io")(server);
 const { connection, emitMessage } = require("./clasSocket/conectionSocket");
 const { conectionDB } = require("./DB/DBConnect");
 const { createLoans } = require("./Repositories/loansRepositori");
-const { getBook }= require('./Repositories/bookRepositori');
+
 require("./Config/config");
 
 app.use(Cors());
@@ -38,6 +38,7 @@ app.post("/create/loan",async (req, res) => {
   
   const {
     book_id,
+    user_id,
     name_user,
     mobile_user,
     image_book,
@@ -45,10 +46,10 @@ app.post("/create/loan",async (req, res) => {
     return_loan,
   } = req.body;
 
-  let data = await getBook(book_id)
-
+ 
   const loan = createLoans();
   loan.book_id = book_id;
+  loan.user_id = user_id;
   loan.name_book = name_book;
   loan.image_book = image_book;
   loan.name_user = name_user;
@@ -56,15 +57,13 @@ app.post("/create/loan",async (req, res) => {
   loan.date_loan = fecha;
   loan.return_date = return_loan;
 
-  if(data.amount){
-    loan.save();
-    res.json(loan);
+  loan.save();
+  res.json(loan);
 
-    emitMessage(io, name_book);
-  
-  }else{
-    res.json({messageError:"libro agotado"});
-  }
+  emitMessage(io, name_book);
+
+  // res.json({messageError:"libro agotado"});
+
 });
 
 app.use(require("./Routes/Routes"));

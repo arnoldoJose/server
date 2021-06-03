@@ -5,6 +5,7 @@ const {
   getReturnLoanName,
   getAllReservetaions,
   reservationName,
+  getLoansUser
 } = require("../../Repositories/loansRepositori");
 
 const getLoans = async (req,res) => {
@@ -28,7 +29,7 @@ const getReturnName = async (req,res) => {
     res.json({message: "el usuario no existe"})
   }else{
      res.json(data);
-  }
+  } 
 }
 
 const getReservetaions = async (req,res) => {
@@ -50,10 +51,19 @@ const getReservationName = async (req,res) => {
 
 }
 
+const getAllUserLons = async (req,res) => {
+
+  let { id } = req.query;
+
+  let data = await getLoansUser(id);
+  res.json(data)
+}
+
 module.exports = {
   getLoans,
   getReturns,
   getReservetaions,
   getReturnName,
   getReservationName,
+  getAllUserLons
 };
