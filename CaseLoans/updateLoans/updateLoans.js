@@ -17,20 +17,20 @@ const updateLoan = async (req,res) => {
 
 const updateReservation = async (req,res) => {
 
-  // let { id } = req.params;
+  let { id } = req.params;
   let { bookI } = req.query;
-  // let data = await updateIdReservation(id);
+  let data = await updateIdReservation(id);
   let datos = await getBook(bookI);
 
-  res.json(datos)
-//  if(datos.amount){
-//    data.reservation_state = "assigned";
-//    quitOneBookReservation(datos._id);
-//    data.save();  
-//    res.json({message: 'la reservacion a sido asignada'});
-//  }else{
-//    res.json({ messageError: "Libro aun no disponible" });
-//  }
+ 
+ if(datos.amount){
+   data.reservation_state = "assigned";
+   quitOneBookReservation(datos._id);
+   data.save();  
+   res.json({message: 'la reservacion a sido asignada'});
+ }else{
+   res.json({ messageError: "Libro aun no disponible" });
+ }
 
 }
 

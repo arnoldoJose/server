@@ -48,7 +48,7 @@ route.post("/delete/loan/:id",deleteLoan.eleminatedLoan);
 
 route.post("/admin/loan",createLoans.createAdminLoan);
 route.put("/update/loan/:id",updateLoans.updateLoan);
-route.put("/update/reservation/:id",updateLoans.updateReservation);
+route.post("/update/reservation/:id",updateLoans.updateReservation);
 //case Admin
 const { registerUser,loginUser } = require('../CaseAdmin/adminController');
 //routes Admin
