@@ -28,5 +28,22 @@ const quitOneBookReservation = async (id) => {
 
 }
 
+const asignedDate = () => {
+  let day = new Date().getDate();
+  let dayAsigned;
 
-module.exports = { quitOneBook, incrementOneBook,quitOneBookReservation};
+  if(day === 29 || day === 31){
+    dayAsigned = '0'+4;
+  }else {
+    dayAsigned = day+=4;
+    if(dayAsigned <= 9){
+      dayAsigned = '0'+dayAsigned;
+    }
+
+  }
+
+return dayAsigned;
+}
+
+
+module.exports = { quitOneBook, incrementOneBook,quitOneBookReservation,asignedDate};

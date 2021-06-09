@@ -63,7 +63,7 @@ route.post("/login/user",userLogin.login);
 
 //
 const { sendMessage } = require('../twiliosms/sendSms');
-const { getLoans } = require('../CaseLoans/getLoans/getLoans');
+
 //enviando mensajes
 route.post("/send/message", sendMessage)
 module.exports = route;
