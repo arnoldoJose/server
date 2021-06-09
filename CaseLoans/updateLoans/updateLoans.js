@@ -23,7 +23,7 @@ const updateReservation = async (req,res) => {
   let data = await updateIdReservation(id);
   let datos = await getBook(bookI);
 
-  let month = new Date().getMonth();
+  let month = new Date().getMonth()+1;
   let fecha = `${new Date().getFullYear()}-${(month <= 9) ? ('0'+month) : (month)}-${asignedDate()}`;
  
  if(datos.amount){
