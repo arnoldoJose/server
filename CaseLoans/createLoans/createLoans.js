@@ -4,8 +4,8 @@ const { quitOneBook } = require('../funtionaLoans');
 
 const createAdminLoan = (req, res) => {
 
-  let year = new Date().getFullYear(),month = new Date().getMonth()+1, day = new Date().getDate();
-  let fecha = `${year}-${(month <= 9)? ("0"+month) : (month)}-${(day <= 9)? ("0"+day) : (day)}`;
+  let year = new Date().getFullYear(),month = new Date().getMonth()+1;
+  let fecha = `${year}-${(month <= 9)? ("0"+month) : (month)}-${(new Date().getDate() <= 9)? ("0"+new Date().getDate()) : (new Date().getDate())}`;
 
   const { name_user,mobile_user,image_book,name_book,return_loan,book_id,user_id} = req.body;
 
@@ -21,7 +21,6 @@ const createAdminLoan = (req, res) => {
   loan.reservation_state = "assigned";
    
   quitOneBook(loan,book_id,res);
-
 };
 
 

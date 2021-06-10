@@ -61,7 +61,6 @@ app.post("/create/loan",async (req, res) => {
   res.json(loan);
 
   emitMessage(io, name_book);
-
   // res.json({messageError:"libro agotado"});
 
 });
