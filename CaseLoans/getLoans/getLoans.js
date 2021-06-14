@@ -8,6 +8,8 @@ const {
   getLoansUser
 } = require("../../Repositories/loansRepositori");
 
+const { getBook } = require('../../Repositories/bookRepositori');
+
 const getLoans = async (req,res) => {
   let data = await getRepositoriLoans();
   res.json(data);
@@ -33,9 +35,12 @@ const getReturnName = async (req,res) => {
 }
 
 const getReservetaions = async (req,res) => {
+  //buscar el libro con el bookId
+  //y retornar solo la propiedad amout
   let data = await getAllReservetaions();
   res.json(data);
 }
+
 
 const getReservationName = async (req,res) => {
   let {name} = req.query;
