@@ -1,5 +1,5 @@
 
-const { createLoans } = require('../../Repositories/loansRepositori');
+const { createLoanAd } = require('../../Repositories/loansRepositori');
 const { quitOneBook } = require('../funtionaLoans');
 
 const createAdminLoan = (req, res) => {
@@ -9,7 +9,7 @@ const createAdminLoan = (req, res) => {
 
   const { name_user,mobile_user,image_book,name_book,return_loan,book_id,user_id} = req.body;
 
-  const loan = createLoans();
+  const loan = createLoanAd();
   loan.book_id = book_id;
   loan.user_id = user_id;
   loan.name_book = name_book;

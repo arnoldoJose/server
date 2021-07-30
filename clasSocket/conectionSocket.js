@@ -8,8 +8,8 @@ class Connection {
     });
   }
 
-  emitMessage (io,name_book) {
-   io.emit("envio", `Nueva solicitud de prestamo al libro: ${name_book}`);
+  emitMessage (io,key,metodo,name_book) {
+   io.emit(`${key}`, `Nueva solicitud de ${metodo} al libro: ${name_book}`);
   }
 }
 

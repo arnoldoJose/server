@@ -1,5 +1,5 @@
 const { registerUser } = require('../Repositories/repositoriUser');
-
+const jwt = require('jsonwebtoken');
 
 const register = (req,res) => {
 
@@ -12,6 +12,11 @@ const register = (req,res) => {
   newUser.password = newUser.encryptPassword(password)
 
   newUser.save();
+
+
+  let token = jwt.sign({newUser},"keytoken",{expiresIn: "1h"})
+
+  res.status(200).json({token,newUser})
 
 }
 
