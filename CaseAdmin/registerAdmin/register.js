@@ -1,7 +1,6 @@
 const { registerUser } = require('../../Repositories/adminRepositori');
-const register = (req,res) => {
 
- 
+const register = (req,res) => { 
   let { name,email,password } = req.body;
 
   const admin = registerUser();
@@ -9,16 +8,9 @@ const register = (req,res) => {
   admin.email = email;
   admin.password = admin.encryptPassword(password);
 
+  // admin.save();
 
-  admin.save();
-  
-  res.json(admin);
-
-
-
+  res.json({msj:`el usuario ${name} a sido registrado`});
 }
-
-
-
 
 module.exports = { register }

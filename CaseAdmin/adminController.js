@@ -1,4 +1,4 @@
 const registerUser = require('./registerAdmin/register');
 const loginUser = require('./loginAdmin/login');
-
-module.exports = { registerUser, loginUser }
+const registerTypes = require('./typeadmin/registerTypeAdmin')
+module.exports = { registerUser, loginUser, registerTypes }

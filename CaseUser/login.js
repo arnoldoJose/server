@@ -14,7 +14,7 @@ const login = async (req,res) => {
     });
     return;
   } else {
-    let token = jwt.sign({ user }, "keytoken", { expiresIn: "1h" });
+    let token = jwt.sign({ user },process.env.TOKEN_KEY, { expiresIn: "1h" });
     res.status(200).json({token,user});
   }
 

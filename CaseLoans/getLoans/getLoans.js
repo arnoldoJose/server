@@ -12,6 +12,7 @@ const { getBook } = require('../../Repositories/bookRepositori');
 
 const getLoans = async (req,res) => {
   let data = await getRepositoriLoans();
+  console.log(req.usuario);
   res.json(data);
 }
 

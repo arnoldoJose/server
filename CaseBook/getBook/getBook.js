@@ -18,16 +18,17 @@ const getOneBook = async (req,res) => {
 
 const getBookName = async (req,res) => {
 
-  let { name,autor } = req.query;
+  let { name } = req.query;
  
   let nameReg = new RegExp(name,'i');
-  let name_autor = new RegExp(autor, "i");
+  // let name_autor = new RegExp(autor, "i");
 
-  let book = await getName(nameReg, name_autor);
+  let book = await getName(nameReg);
 
   if(!book.length){
     res.json({message: 'el libro no se encuantra'});
-  }else{
+  }
+  else{
     res.json({ book });
   }
 

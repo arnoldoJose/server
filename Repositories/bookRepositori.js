@@ -1,16 +1,17 @@
 
 const Book  = require('../DB/Models/Books');
 
+
 //getsBooks
 const getBooks = async () => await Book.find();
 const getBook = async (id) => await Book.findById(id);
-const getName = async (nameBook, name_autor) => {
+const getName = async (nameBook) => {
 
   let data;
    data = await Book.find({name: nameBook});
   
   if(!data.length){
-   data = await Book.find({autor: name_autor});
+   data = await Book.find({autor: nameBook});
 
     if(!data.length){
       return data;

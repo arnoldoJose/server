@@ -3,14 +3,15 @@ const jwt = require('jsonwebtoken');
 
 const register = (req,res) => {
 
-  let { username,email,password,mobile } = req.body;
+  let { name,email,password,phone } = req.body;
 
   let newUser = registerUser();
-  newUser.username = username;
+  newUser.username = name;
   newUser.email = email;
-  newUser.mobile = mobile;
+  newUser.mobile = phone;
   newUser.password = newUser.encryptPassword(password)
 
+  console.log(phone,name,email,password)
   newUser.save();
 
 

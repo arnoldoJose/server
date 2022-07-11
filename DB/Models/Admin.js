@@ -15,6 +15,11 @@ var adminSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    typeUser: {
+      type:String,
+      required: false,
+      default: 'user'
+    }
 });
 
 adminSchema.methods.encryptPassword = function (password) {

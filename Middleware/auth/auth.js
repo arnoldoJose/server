@@ -1,9 +1,8 @@
 const jwt = require('jsonwebtoken');
-const { key } = require('../../Config/config');
+
 const auth = (req,res,next) => {
 
   const headerToken = req.get("Authorization");
-
 
   if (!headerToken) {
     const error = new Error("no autorizado");
@@ -11,31 +10,25 @@ const auth = (req,res,next) => {
     throw error;
   }
 
-  let token = headerToken.split("/")[1];
+  let token = headerToken.split(' ')[1];
+  let tokenReview;
 
-  let validateToken;
+    try {
+    tokenReview = jwt.verify(token,process.env.TOKEN_KEY);
+    } catch (error) {
+      error.statusCode = 500;
+      throw error;
+    }
 
-  try {
-    validateToken = jwt.verify(token, key);
-  } catch (error) {
-    error.statusCode = 500;
+    if (!tokenReview) {
+      const error = new Error("token invalido");
+      error.statusCode = 401;
+      throw error;
+    }
 
-    throw error;
-  }
-
-  if (!validateToken) {
-    const error = new Error("token invalido");
-    error.statusCode = 401;
-    throw error;
-  }
-
-  req.usuario = validateToken.usuario;
-
-  next();
-
+    req.usuario = tokenReview.usuario;
+  
+    next();
 }
 
-
 module.exports = auth;
-
-
