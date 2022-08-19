@@ -39,6 +39,7 @@ route.get("/get/return",getAllLoans.getReturnName);
 
 //-----------------------------------------------
 route.get("/get/reservations",getAllLoans.getReservetaions);
+route.get("/get/filterReservation",getAllLoans.getReservationFillter)
 route.get("/get/reservation",getAllLoans.getReservationName);
 //------------------
 route.get("/get/user/loans",getAllLoans.getAllUserLons);
