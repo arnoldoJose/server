@@ -1,8 +1,8 @@
 
-const { createLoanAd } = require('../../Repositories/loansRepositori');
+const { createLoanAd, createLoans } = require('../../Repositories/loansRepositori');
 const { quitOneBook } = require('../funtionaLoans');
 
-const createAdminLoan = (req, res) => {
+const createAdminLoan = (req,res,io,emitMessage) => {
 
   let year = new Date().getFullYear(),month = new Date().getMonth()+1;
   let fecha = `${year}-${(month <= 9)? ("0"+month) : (month)}-${(new Date().getDate() <= 9)? ("0"+new Date().getDate()) : (new Date().getDate())}`;
@@ -21,8 +21,24 @@ const createAdminLoan = (req, res) => {
   loan.reservation_state = "assigned";
    
   quitOneBook(loan,book_id,res);
+  emitMessage(io, "prestamo", "Prestamo", loan.name_book);
 };
 
+const createReservation = (req,res,io,emitMessage) => {
+
+    let year = new Date().getFullYear(),
+      month = new Date().getMonth() + 1,
+      day = new Date().getDate();
+    let fecha = `${year}-${month <= 9 ? "0" + month : month}-${
+      day <= 9 ? "0" + day : day
+    }`;
+   
+    const loan = createLoans(req.body,fecha);
+    loan.save();
+    res.json(loan);
+  
+    emitMessage(io,"envio","Reservacion",loan.name_book);
+}
 
 
-module.exports = { createAdminLoan };
+module.exports = { createAdminLoan, createReservation };

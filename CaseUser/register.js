@@ -21,4 +21,10 @@ const register = (req,res) => {
 
 }
 
-module.exports = { register }
+
+const pruebaFunction = (req,res,message,io) => {
+res.json('enviado');
+message(io)
+}
+
+module.exports = { register,pruebaFunction }

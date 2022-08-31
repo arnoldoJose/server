@@ -3,17 +3,15 @@ const { getBook } = require('../../Repositories/bookRepositori');
 const { incrementOneBook,quitOneBookReservation } = require('../funtionaLoans');
 const { asignedDate } = require("../funtionaLoans");
 
-const updateLoan = async (req,res) => {
+const updateLoan = async (req,res,io,messageReturn) => {
 
   let { id } = req.params;
-  
   let data = await updateLoanId(id);
   data.return_state = "assigned";
   incrementOneBook(data.book_id);
   data.save();
-  
-
   res.json({message: "El libro a sido devuelto"});
+  messageReturn(io,data.name_user,data.name_book)
 }
 
 const updateReservation = async (req,res) => {
